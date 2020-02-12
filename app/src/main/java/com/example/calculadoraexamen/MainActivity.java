@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements ClassAbstract {
     private Button   calcular;
     private EditText totalPagar;
     private EditText tarifaBase;
+    private EditText iva;
 
 
 
@@ -34,13 +35,15 @@ public class MainActivity extends AppCompatActivity implements ClassAbstract {
         calcular = findViewById(R.id.btnCalcular);
         totalPagar = findViewById(R.id.lbTotalPagar);
         tarifaBase = findViewById(R.id.lbEnbaseA);
+        iva = findViewById(R.id.lbIva);
 
         calcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 totalPagar.setText(String.valueOf(calcularTarifamtd() + iva()));
-                //tarifaBase.setText("Tarifa calculada en base a:" );
+                iva.setText(String.valueOf(iva()));
+                tarifaBase.setText("Tarifa calculada en base a:" );
 
             }
         });
@@ -69,13 +72,8 @@ public class MainActivity extends AppCompatActivity implements ClassAbstract {
     @Override
     public float calcularTarifamtd() {
         float totalTarifa =0;
-        double iva=0.16;
-        double resultado;
         float num1 = Float.parseFloat(tarifa.getText().toString());
         totalTarifa = num1 *  pesoVolumenmtd();
-        iva = totalTarifa * 0.16;
-
-
         return totalTarifa;
     }
 }
